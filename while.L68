@@ -1,0 +1,48 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 15/02/2023 16:50:39
+
+00001000                             1    ORG    $1000
+00001000                             2  START:    
+00001000  6100 000C                  3      BSR RANDOM_NUMBER  
+00001004                             4  
+00001004  103C 0003                  5      MOVE.B #3, D0 #Display Number
+00001008  4E4F                       6      TRAP #15
+0000100A  6000 001E                  7      BRA END_PROG
+0000100E                             8  
+0000100E                             9  
+0000100E                            10  RANDOM_NUMBER:     
+0000100E  103C 0008                 11      MOVE.B #8, D0 #Loads D1 with Time in 100's of Seconds since midnight (6 Bits)
+00001012                            12  
+00001012  4E4F                      13      TRAP #15  #Place time in D1
+00001014                            14     
+00001014  C2BC 0000FFFF             15      AND.L #$0000FFFF, D1 # AND 6 Bits to prevent any overflow
+0000101A                            16  
+0000101A  82FC 0003                 17      DIVU #3, D1 #Divide by 10, 100, 1000, 10000 depending on Number range required
+0000101E                            18      
+0000101E  4841                      19      SWAP D1 #SWAP Higher Order Word and Lower Order Word in D1
+00001020                            20  
+00001020  5241                      21      ADDQ.W #1, D1 #Add 1 to D1.W so number is at least 1
+00001022                            22  
+00001022  3401                      23      MOVE.W D1, D2 #Extract the number from D1.W
+00001024                            24  
+00001024  4281                      25      CLR.L D1 # Clear contents of D1
+00001026                            26  
+00001026  3202                      27      MOVE.W D2, D1 #Move the generated number to D1
+00001028  4E75                      28      RTS
+0000102A                            29  
+0000102A                            30  END_PROG:
+0000102A                            31  
+0000102A  FFFF FFFF                 32      SIMHALT            
+0000102E                            33      END    START
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+END_PROG            102A
+RANDOM_NUMBER       100E
+START               1000

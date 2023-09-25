@@ -1,0 +1,52 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 25/01/2023 15:29:52
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9      
+00001000  45F9 00001024             10      LEA         Health,A2
+Line 11 ERROR: Invalid size code
+00001006  324A                      11      MOVE.B      A2,A1
+00001008  103C 000D                 12      MOVE.B      #13,D0
+0000100C  4E4F                      13      TRAP        #15
+0000100E                            14      
+0000100E  47F9 00001025             15      LEA         Points,A3
+Line 16 ERROR: Invalid size code
+00001014  320B                      16      MOVE.B      A3,D1
+00001016  5A41                      17      ADD         #5,D1
+Line 18 ERROR: Invalid addressing mode
+00001018                            18      LEA         D0,A3
+Line 19 ERROR: Invalid size code
+00001018  324B                      19      MOVE.B      A3,A1
+0000101A  303C 000D                 20      MOVE        #13,D0
+0000101E  4E4F                      21      TRAP        #15
+00001020                            22      
+00001020                            23            
+00001020                            24      
+00001020                            25  * Put program code here
+00001020                            26  
+00001020  FFFF FFFF                 27      SIMHALT             ; halt simulator
+00001024                            28  
+00001024                            29  * Put variables and constants here
+00001024= 10                        30  Health  dc.b    $10
+00001025= 20                        31  Points  dc.b    $20
+00001026                            32  
+00001026                            33      END    START        ; last line of source
+
+4 errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+HEALTH              1024
+POINTS              1025
+START               1000

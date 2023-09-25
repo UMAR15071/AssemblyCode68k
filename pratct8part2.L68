@@ -1,0 +1,42 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 01/02/2023 15:38:16
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000  45F9 0000101E             10      LEA         Health,A2
+00001006                            11      
+00001006  43F9 0000101F             12      LEA         Points,A1   
+0000100C  1011                      13      MOVE.B      (A1),D0     ;indirect addressing
+0000100E  5A40                      14      ADD         #5,D0
+00001010  5B40                      15      SUB         #5,D0
+00001012  C1FC 0002                 16      MULS        #2,D0
+00001016  81FC 0002                 17      DIVS        #2,D0
+0000101A                            18  * Put program code here
+0000101A                            19  
+0000101A  FFFF FFFF                 20      SIMHALT             ; halt simulator
+0000101E                            21  
+0000101E= 10                        22  Health  dc.b    $10
+0000101F= 0F                        23  Points  dc.b    15
+00001020                            24  
+00001020                            25  * Put variables and constants here
+00001020                            26  
+00001020                            27      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+HEALTH              101E
+POINTS              101F
+START               1000

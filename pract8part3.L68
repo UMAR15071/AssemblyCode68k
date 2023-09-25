@@ -1,0 +1,67 @@
+00001000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.16.01
+Created On: 01/02/2023 15:39:51
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      :
+00000000                             3  * Written by :
+00000000                             4  * Date       :
+00000000                             5  * Description:
+00000000                             6  *-----------------------------------------------------------
+00001000                             7      ORG    $1000
+00001000                             8  START:                  ; first instruction of program
+00001000                             9  
+00001000  43F9 0000105A             10      LEA     text,A1
+00001006  103C 000D                 11      MOVE.B  #13,D0
+0000100A  4E4F                      12      TRAP    #15
+0000100C                            13      
+0000100C  303C 0002                 14      MOVE    #2,D0
+00001010  4E4F                      15      TRAP    #15
+00001012                            16     
+00001012  223C 00009999             17      MOVE.L  #$00009999,D1
+00001018  143C 0007                 18      MOVE.B  #%0111,D2
+0000101C  103C 0015                 19      MOVE.B  #21,D0
+00001020  4E4F                      20      TRAP    #15 
+00001022                            21      
+00001022  303C 0000                 22      MOVE    #0,D0
+00001026  4E4F                      23      TRAP    #15
+00001028                            24      
+00001028  43F9 0000106B             25      LEA     text2,A1
+0000102E  103C 000D                 26      MOVE.B  #13,D0
+00001032  4E4F                      27      TRAP    #15
+00001034                            28      
+00001034  303C 0005                 29      MOVE    #5,D0
+00001038  4E4F                      30      TRAP    #15
+0000103A                            31  
+0000103A  43F9 0000107E             32      LEA     text3,A1
+00001040  223C 00990099             33      MOVE.L  #$00990099,D1
+00001046  143C 0008                 34      MOVE.B  #%1000,D2
+0000104A  103C 0015                 35      MOVE.B  #21,D0
+0000104E  4E4F                      36      TRAP    #15 
+00001050                            37      
+00001050  303C 0000                 38      MOVE    #0,D0
+00001054  4E4F                      39      TRAP    #15
+00001056                            40  
+00001056                            41      
+00001056                            42  * Put program code here
+00001056                            43  
+00001056  FFFF FFFF                 44      SIMHALT             ; halt simulator
+0000105A                            45  
+0000105A= 45 6E 74 65 72 20 ...     46  text    dc.b    'Enter your name ',0
+0000106B= 45 6E 74 65 72 20 ...     47  text2    dc.b    'Enter a character ',0
+0000107E= 63 68 61 72 61 63 ...     48  text3    dc.b    'character: ',0
+0000108A                            49  * Put variables and constants here
+0000108A                            50  
+0000108A                            51      END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1000
+TEXT                105A
+TEXT2               106B
+TEXT3               107E
